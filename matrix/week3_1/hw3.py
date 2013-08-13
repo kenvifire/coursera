@@ -4,7 +4,7 @@
 from mat import Mat
 from vec import Vec
 
-
+import matutil
 
 ## Problem 1
 # Please represent your solutions as lists.
@@ -147,69 +147,69 @@ column_row_vector_multiplication5 = Vec({0, 1, 2}, {0:-3,1:1,2:9})
 ## Problem 11
 def lin_comb_mat_vec_mult(M, v):
     assert(M.D[1] == v.D)
-    pass
+    return sum([s*v for (s,v) in zip([v[key] for key in v.D],[Vec(M.D[0],{k:M[(k,r)] for k in M.D[0]}) for r in M.D[1]])])
 
 
 
 ## Problem 12
 def lin_comb_vec_mat_mult(v, M):
     assert(v.D == M.D[0])
-    pass
+    return sum([s*v for (s,v) in zip([v[key] for key in v.D],[Vec(M.D[1],{k:M[(r,k)] for k in M.D[1]}) for r in M.D[0]])])
 
 
 
 ## Problem 13
 def dot_product_mat_vec_mult(M, v):
     assert(M.D[1] == v.D)
-    pass
+    return Vec(M.D[0],{key:val for (key,val) in zip(M.D[0],[v*x for x in [Vec(M.D[1],{k:M[(r,k)] for k in M.D[1]}) for r in M.D[0]]])}) 
 
 
 
 ## Problem 14
 def dot_product_vec_mat_mult(v, M):
     assert(v.D == M.D[0])
-    pass
+    return Vec(M.D[1],{key:val for (key,val) in zip(M.D[1],[v*x for x in [Vec(M.D[0],{k:M[(k,r)] for k in M.D[0]}) for r in M.D[1]]])}) 
 
 
 
 ## Problem 15
 def Mv_mat_mat_mult(A, B):
     assert A.D[1] == B.D[0]
-    pass
+    return matutil.coldict2mat({k:A*matutil.mat2coldict(B)[k] for k in matutil.mat2coldict(B)})
 
 
 
 ## Problem 16
 def vM_mat_mat_mult(A, B):
     assert A.D[1] == B.D[0]
-    pass
+    return matutil.rowdict2mat({k:matutil.mat2rowdict(A)[k]*B for k in matutil.mat2rowdict(A)})
 
 
 
 ## Problem 17
 def dot_prod_mat_mat_mult(A, B):
     assert A.D[1] == B.D[0]
-    pass
+    return Mat((A.D[0],B.D[1]),{(row,col):matutil.mat2rowdict(A)[row]*matutil.mat2coldict(B)[col] for row in matutil.mat2rowdict(A) for col in matutil.mat2coldict(B)})
 
 
 
 ## Problem 18
-solving_systems_x1 = ...
-solving_systems_x2 = ...
-solving_systems_y1 = ...
-solving_systems_y2 = ...
-solving_systems_m = Mat(({0, 1}, {0, 1}), {...})
-solving_systems_a = Mat(({0, 1}, {0, 1}), {...})
-solving_systems_a_times_m = Mat(({0, 1}, {0, 1}), {...})
-solving_systems_m_times_a = Mat(({0, 1}, {0, 1}), {...})
+solving_systems_x1 = -0.2
+solving_systems_x2 = 0.4
+solving_systems_y1 = 0.8
+solving_systems_y2 = -0.6
+solving_systems_m = Mat(({0, 1}, {0, 1}), {(0,0):-0.2,(0,1):0.8,(1,0):0.4,(1,1):-0.6})
+solving_systems_a = Mat(({0, 1}, {0, 1}), {(0,0):3,(0,1):4,(1,0):2,(1,1):1})
+solving_systems_a_times_m = Mat(({0, 1}, {0, 1}), {(0,0):1,(0,1):0,(1,0):0,(1,1):1})
+solving_systems_m_times_a = Mat(({0, 1}, {0, 1}), {(0,0):1,(0,1):0,(1,0):0,(1,1):1})
 
 
 
 ## Problem 19
 # Please write your solutions as booleans (True or False)
 
-are_inverses1 = ...
-are_inverses2 = ...
-are_inverses3 = ...
-are_inverses4 = ...
+are_inverses1 = True
+are_inverses2 = True
+are_inverses3 = False
+are_inverses4 = False
 
