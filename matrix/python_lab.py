@@ -100,9 +100,7 @@ identity_dict ={ k:k for k in D }
 ## Task 25
 base = 10
 digits = set(range(10))
-representation_dict = { (x+y*base+z*base*base):[z,x,y] for x in digits for y in digits for z in 
-
-digits}
+representation_dict = { (x+y*base+z*base*base):[z,x,y] for x in digits for y in digits for z in digits}
 
 ## Task 26
 d = {0:1000.0, 1:1200.50, 2:990}
