@@ -9,13 +9,13 @@ import org.scalatest.junit.JUnitRunner
 class TweetSetSuite extends FunSuite {
   trait TestSets {
     val set1 = new Empty
-    val set2 = set1.incl(new Tweet("a", "a body", 20))
-    val set3 = set2.incl(new Tweet("b", "b body", 20))
-    val c = new Tweet("c", "c body", 7)
-    val d = new Tweet("d", "d body", 9)
-    val set4c = set3.incl(c)
-    val set4d = set3.incl(d)
-    val set5 = set4c.incl(d)
+    val set2 = set1.incl(new Tweet("a", "a body", 20))//a
+    val set3 = set2.incl(new Tweet("b", "b body", 20))//a,b
+    val c = new Tweet("c", "c body", 7)//c
+    val d = new Tweet("d", "d body", 9)//
+    val set4c = set3.incl(c)//a,b,c
+    val set4d = set3.incl(d)//a,b,d
+    val set5 = set4c.incl(d)//a,b,c,d
   }
 
   def asSet(tweets: TweetSet): Set[Tweet] = {
@@ -50,6 +50,7 @@ class TweetSetSuite extends FunSuite {
     }
   }
 
+
   test("union: with empty set (1)") {
     new TestSets {
       assert(size(set5.union(set1)) === 4)
@@ -65,8 +66,45 @@ class TweetSetSuite extends FunSuite {
   test("descending: set5") {
     new TestSets {
       val trends = set5.descendingByRetweet
+      trends.foreach(t =>println(t))
+      println("=============")
       assert(!trends.isEmpty)
       assert(trends.head.user == "a" || trends.head.user == "b")
+
+      var data1:TweetSet = new Empty()
+      var count =300
+      while(count>0){
+        count = count -  1
+        val rnd:Int = (Math.random()*300).toInt
+        val t = new Tweet("kenvi","test " +rnd,rnd)
+        data1 = data1.incl(t)
+      }
+      var data2:TweetSet = new Empty()
+      var count2 =300
+      while(count2>0){
+        count2 = count2 -  1
+        val rnd:Int = (Math.random()*400).toInt
+        val t = new Tweet("kenvi","test " +rnd,rnd)
+        data2 = data2.incl(t)
+      }
+
+      (data1 union data2).descendingByRetweet foreach(t=>println(t.retweets))
+
     }
   }
+
+
+//
+  test("reduce most ") {
+    new TestSets {
+      val data = set1.incl(new Tweet("kenvi", "my iPhone3", 20))
+        .incl(new Tweet("kenvi", "my iPhone5", 5))
+        .incl(new Tweet("kenvi", "my android4", 4))
+        .incl(new Tweet("kenvi", "my android7", 7))
+        .incl(new Tweet("kenvi", "my android11", 11))
+      println(data.mostRetweeted)
+
+    }
+  }
+
 }

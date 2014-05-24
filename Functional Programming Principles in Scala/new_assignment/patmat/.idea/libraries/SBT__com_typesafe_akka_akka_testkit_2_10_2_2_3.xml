@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="SBT: com.typesafe.akka:akka-testkit_2.10:2.2.3">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib_managed/jars/com.typesafe.akka/akka-testkit_2.10/akka-testkit_2.10-2.2.3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$APPLICATION_HOME_DIR$/bin/&#10;        E:/git/coursera/Functional Programming Principles in Scala/new_assignment/patmat/lib_managed/docs/com.typesafe.akka/akka-testkit_2.10/akka-testkit_2.10-2.2.3-javadoc.jar&#10;      " />
+      <root url="file://$APPLICATION_HOME_DIR$/bin/&#10;        E:/git/coursera/Functional Programming Principles in Scala/new_assignment/patmat/lib_managed/docs/com.typesafe.akka/akka-testkit_2.10/akka-testkit_2.10-2.2.3-javadoc.jar&#10;      " />
+      <root url="file://$APPLICATION_HOME_DIR$/bin/&#10;        E:/git/coursera/Functional Programming Principles in Scala/new_assignment/patmat/lib_managed/docs/com.typesafe.akka/akka-testkit_2.10/akka-testkit_2.10-2.2.3-javadoc.jar&#10;      " />
+      <root url="file://$APPLICATION_HOME_DIR$/bin/&#10;        E:/git/coursera/Functional Programming Principles in Scala/new_assignment/patmat/lib_managed/docs/com.typesafe.akka/akka-testkit_2.10/akka-testkit_2.10-2.2.3-javadoc.jar&#10;      " />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$APPLICATION_HOME_DIR$/bin/&#10;        E:/git/coursera/Functional Programming Principles in Scala/new_assignment/patmat/lib_managed/srcs/com.typesafe.akka/akka-testkit_2.10/akka-testkit_2.10-2.2.3-sources.jar&#10;      " />
+      <root url="file://$APPLICATION_HOME_DIR$/bin/&#10;        E:/git/coursera/Functional Programming Principles in Scala/new_assignment/patmat/lib_managed/srcs/com.typesafe.akka/akka-testkit_2.10/akka-testkit_2.10-2.2.3-sources.jar&#10;      " />
+      <root url="file://$APPLICATION_HOME_DIR$/bin/&#10;        E:/git/coursera/Functional Programming Principles in Scala/new_assignment/patmat/lib_managed/srcs/com.typesafe.akka/akka-testkit_2.10/akka-testkit_2.10-2.2.3-sources.jar&#10;      " />
+      <root url="file://$APPLICATION_HOME_DIR$/bin/&#10;        E:/git/coursera/Functional Programming Principles in Scala/new_assignment/patmat/lib_managed/srcs/com.typesafe.akka/akka-testkit_2.10/akka-testkit_2.10-2.2.3-sources.jar&#10;      " />
+    </SOURCES>
+  </library>
+</component>

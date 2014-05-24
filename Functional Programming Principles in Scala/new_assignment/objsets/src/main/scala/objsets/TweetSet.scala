@@ -108,11 +108,13 @@ abstract class TweetSet {
   def foreach(f: Tweet => Unit): Unit
 
   def reduceMost(most:Tweet):Tweet
+
+  def isEmpty:Boolean
 }
 
 class Empty extends TweetSet {
 
-
+  override  def isEmpty = true
   /**
    * Returns the tweet from this set which has the greatest retweet count.
    *
@@ -124,7 +126,7 @@ class Empty extends TweetSet {
    */
   override def mostRetweeted: Tweet = throw new NoSuchElementException
 
-  def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = this
+  def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = acc
 
 
   /**
@@ -163,7 +165,7 @@ class Empty extends TweetSet {
 
 class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
 
-
+   override  def isEmpty = false
   /**
    * Returns the tweet from this set which has the greatest retweet count.
    *
@@ -215,7 +217,28 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
    * Question: Should we implment this method here, or should it remain abstract
    * and be implemented in the subclasses?
    */
-  override def union(that: TweetSet): TweetSet = ((left union right) union that) incl (elem)
+  override def union(that: TweetSet): TweetSet = {
+    var result: TweetSet = new Empty
+
+
+    foreach(tweet => {
+      result = result.incl(tweet)
+    })
+    that.foreach(tweet => {
+      result = result.incl(tweet)
+    })
+    result
+
+  }
+
+//  def reduceUnion(that : TweetSet, initSet : TweetSet) : TweetSet =
+//    if(that.isEmpty) initSet
+//    else {
+//
+//      that.foreach(tweet => initSet.incl(tweet))
+//      initSet
+//    }
+
 
   /**
    * Returns a list containing all tweets of this set, sorted by retweet count
@@ -226,17 +249,27 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
    * Question: Should we implment this method here, or should it remain abstract
    * and be implemented in the subclasses?
    */
-  override def descendingByRetweet: TweetList = new Cons(mostRetweeted, remove(mostRetweeted).descendingByRetweet)
+  override def descendingByRetweet: TweetList = {
+    print("most: " +mostRetweeted.retweets)
+    print(",out of ")
+    foreach(t=>print("," + t.retweets))
+    println()
+    new Cons(mostRetweeted, remove(mostRetweeted).descendingByRetweet)
+  }
 
   override def reduceMost(most: Tweet): Tweet = {
 
     val leftMost = left.reduceMost(most)
     val rightMost = right.reduceMost(most)
+    //print("left:" +leftMost.retweets)
 
-    if(leftMost.retweets > rightMost.retweets && leftMost.retweets > most.retweets && leftMost.retweets > elem.retweets) leftMost
-    else if(rightMost.retweets > leftMost.retweets && rightMost.retweets > most.retweets && rightMost.retweets > elem.retweets) rightMost
-    else if(elem.retweets > leftMost.retweets && elem.retweets > rightMost.retweets && elem.retweets > most.retweets) elem
-    most
+    //print("right:" +rightMost.retweets)
+
+
+    if( (leftMost.retweets > rightMost.retweets) && (leftMost.retweets > most.retweets) && (leftMost.retweets > elem.retweets)) leftMost
+    else if((rightMost.retweets > leftMost.retweets) && (rightMost.retweets > most.retweets) && (rightMost.retweets > elem.retweets)) rightMost
+    else if((elem.retweets > leftMost.retweets) && (elem.retweets > rightMost.retweets) && (elem.retweets > most.retweets)) elem
+    else most
 
   }
 }
@@ -274,10 +307,13 @@ object GoogleVsApple {
    * A list of all tweets mentioning a keyword from either apple or google,
    * sorted by the number of retweets.
    */
-  lazy val trending: TweetList = (googleTweets union appleTweets).descendingByRetweet
+  val trending: TweetList = (googleTweets union appleTweets).descendingByRetweet
 }
 
 object Main extends App {
   // Print the trending tweets
-  GoogleVsApple.trending foreach println
+  //GoogleVsApple.googleTweets.descendingByRetweet foreach( t=>println(t.retweets))
+  GoogleVsApple.googleTweets.mostRetweeted
+
+
 }
