@@ -26,7 +26,16 @@
 #### Construct n*n subimages
 
 #### Forward transform
-MSE[mean square error]
+MSE[mean square error] ![image](images/MSE.git)
 
-![image](images/MSE.git)
+- Karhunen-Loeve transform
+- DCT discrete cosine transform
+- Why DCT
+	- Markovian
+	- There is repetition in your image
+	
+#### Quantization
+
+
+
 
