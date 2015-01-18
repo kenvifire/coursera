@@ -26,7 +26,7 @@
 #### Construct n*n subimages
 
 #### Forward transform
-MSE[mean square error] ![image](images/MSE.git)
+MSE[mean square error] ![image](images/MSE.gif)
 
 - Karhunen-Loeve transform
 - DCT discrete cosine transform
