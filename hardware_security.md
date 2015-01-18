@@ -43,3 +43,28 @@
 
 #### Approach:
 - use IP's implementation or appearance as wartermark
+
+
+### Figerprinting
+##### Fingerprinting vs. Watermarking
+- Both are (invisible) identification codes permanently embedded as an integral part within a design for IPP
+	- Watermark: same for all copies
+	- Fingerprint: unique for each copy
+- Fingerprint = multiple distinct watermarks 
+- Basic needs for fingerprinting method:
+	- Effective method to create fingerprinting
+	- Collusion-free distribution of fingerprinting
+
+#### Approach and Challenges
+##### Generation protocol
+- Quantity
+- Quality
+- Run-time
+#### Distribution protocol
+- Uniqueness
+- Robustness
+- Collusion-free
+
+#### Two Fingerprinting Techniques
+- Constraint addition
+- Iterative approach
