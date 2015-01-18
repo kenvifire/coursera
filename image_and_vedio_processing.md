@@ -35,7 +35,14 @@ MSE[mean square error] ![image](images/MSE.git)
 	- There is repetition in your image
 	
 #### Quantization
+- The main step that introduces error
+- Max-Lloyd Optimal Qunantizer
 
+#### JPEG & JPENG-LS
+
+
+
+#### Run-length Coding
 
 
 
